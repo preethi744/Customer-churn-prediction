@@ -1,9 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html >
 <head>
   <meta charset="UTF-8">
   <title>ML_API</title>
-<body>
 <style>
     /* CSS code for button */
     body {
@@ -12,13 +11,15 @@
       background-attachment: fixed;
       background-size: cover;
     }
-}
 </style>
-<div class="login">
+</head>
+<body>
+	
+<div class="login" style="text-align: center;">
 	
     <!-- Get input for predict the churn -->
-    <center>
-    <form action="{{ url_for('predict')}}"method="POST">
+	
+    <form action="{{ url_for('predict')}}"method="post">
 	    
         <h1>Enter input features</h1>
         
@@ -49,28 +50,27 @@
     	 <input type="text" name="average_monthly_balance_prevQ" placeholder="average_monthly_balance_prevQ" required="required" />
          <input type="text" name="current_month_credit" placeholder="current_month_credit" required="required" />
 	 <input type="text" name="previous_month_credit" placeholder="previous_month_credit" required="required" />
-		<br>
+	<br>
     	<input type="text" name="current_month_debit" placeholder="current_month_debit" required="required" />
         <input type="text" name="previous_month_debit" placeholder="previous_month_debit" required="required" />
 	<input type="text" name="current_month_balance" placeholder="current_month_balance" required="required" />
     	<input type="text" name="previous_month_balance" placeholder="previous_month_balance" required="required" />
     	<br>
         
-        <br>
         
         <!-- Show button -->
-        <div class="button_cont" align="center"><a class="button_css" href="http://localhost:8891/notebooks/model.ipynb" " target="_blank" rel="nofollow noopener">
+        <div class="button_cont" ><a class="button_css" href="http://localhost:8891/notebooks/model.ipynb" " target="_blank" rel="nofollow noopener">
             <button type="submit" class="btn btn-primary btn-block btn-large"><strong>Predict Churn</strong></button></a>
         </div>
         
     </form>
-    </center>
+   
    
 # <!-- Show predicted output using ML model --> 
-   <div>
-       <center>
-   <h1>{{ prediction_text }}</h1>
-       </center>
+   <div style="text-align: center;">
+    
+	<h1>{{ prediction_text }}</h1>
+       
    </div>
 </div>
 
