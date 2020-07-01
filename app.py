@@ -21,28 +21,60 @@ def predict():
     features=[]
     features.append(request.form.get('vintage'))
     features.append(request.form.get('age'))
-    features.append(request.form.get('branch_code'))
-    features.append(request.form.get('occupation'))
-    features.append(request.form.get('city'))
-    features.append(request.form.get('customer_nw_category'))
+    if request.form.get('gender') is "Male":
+        features.append(1)
+    elif request.form.get('gender') is "Female":
+        features.append(0)
+    else:
+        features.append(-1)
     features.append(request.form.get('dependents'))
+    features.append(request.form.get('city'))
+    features.append(request.form.get('branch_code'))
     features.append(request.form.get('days_since_last_transaction'))
+    if request.form.get('occupation') is "company":
+        features.append(1)
+        features.append(0)
+        features.append(0)
+        features.append(0)
+        features.append(0)
+    elif request.form.get('occupation') is "retired":
+        features.append(0)
+        features.append(1)
+        features.append(0)
+        features.append(0)
+        features.append(0)
+    elif request.form.get('occupation') is "salaried":
+        features.append(0)
+        features.append(0)
+        features.append(1)
+        features.append(0)
+        features.append(0)
+    elif request.form.get('occupation') is "self_employed":
+        features.append(0)
+        features.append(0)
+        features.append(0)
+        features.append(1)
+        features.append(0)
+    else:
+        features.append(0)
+        features.append(0)
+        features.append(0)
+        features.append(0)
+        features.append(1)
+    
+    features.append(request.form.get('customer_nw_category'))
     features.append(request.form.get('current_balance'))
-    features.append(request.form.get('avarage_monthly_end_balance_prevQ'))
-    features.append(request.form.get('average_monthly_end_balance_prevQ2'))
-    features.append(request.form.get('previous_month_debit'))
-    features.append(request.form.get('current_month_debit'))
+    features.append(request.form.get('previous_month_end_balance'))
+    features.append(request.form.get('avarage_monthly_end_balance_prevQ2'))
+    features.append(request.form.get('average_monthly_end_balance_prevQ'))
     features.append(request.form.get('current_month_credit'))
     features.append(request.form.get('previous_month_credit'))
+    features.append(request.form.get('previous_month_debit'))
+    features.append(request.form.get('current_month_debit'))
     features.append(request.form.get('current_month_balance'))
     features.append(request.form.get('previous_month_balance'))
     
-    if request.form.get('gender') is "Male":
-        df.append(1)
-    if request.form.get('gender') is "Female":
-        df.append(0)
-    else:
-        df.append(-1)
+    
     final_features=[np.array(features)]
     prediction=model.predict(final_features)
    
