@@ -18,7 +18,8 @@
 	
     <!-- Get input for predict the churn -->
     <center>
-    <form action="{{ url_for('predict')}}"method="post">
+    <form action="{{ url_for('predict')}}"method="POST">
+	    
         <h1>Enter input features</h1>
         
     	<input type="text" name="vintage" placeholder="vintage" required="required" />
@@ -66,11 +67,11 @@
     </center>
    
 # <!-- Show predicted output using ML model --> 
-    <div>
+   <div>
        <center>
-     <h1>{{ prediction_text }}</h1>
+   <h1>{{ prediction_text }}</h1>
        </center>
-    </div>
+   </div>
 </div>
 
 </body>
